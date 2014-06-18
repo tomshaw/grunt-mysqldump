@@ -1,6 +1,6 @@
 # grunt-mysqldump
 
-> Grunt plugin for dumping and archiving MySQL databases. Supports multiple databases in a single operation. Runs asynchronously and extremely fast. Outputs export and compression information as each operation completes so you can visually see which databases asynchronously finish first.
+> Grunt plugin for dumping and archiving MySQL databases. Supports exporting and archiving multiple databases in a single operation. Runs asynchronously and extremely fast. Outputs export and compression information as each operation completes.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -136,6 +136,13 @@ To target specific tasks register them at the bottom of the data object.
 ```
 grunt.registerTask('backup', ['mysqldump:stuff']);
 ```
+
+### Awesome Libraries Used
+
++ [shelljs](https://github.com/arturadib/shelljs) - Portable Unix shell commands for Node.js.
++ [node-archiver](https://github.com/ctalkington/node-archiver) - A streaming interface for archive generation.
++ [each-async](https://github.com/sindresorhus/each-async) - Async concurrent iterator (async forEach).
++ [bytes.js](https://github.com/visionmedia/bytes.js) - Node byte string parser.
 
 #### Running Verbose Mode 
 Specify the verbose mode parameter to log extra debugging information.

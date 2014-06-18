@@ -1,5 +1,5 @@
 /*
- * grunt-contrib-mysqldump
+ * grunt-mysqldump
  * https://github.com/tomshaw/grunt-mysqldump
  *
  * Copyright (c) 2014 Tom Shaw
