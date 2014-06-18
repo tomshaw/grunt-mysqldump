@@ -137,19 +137,19 @@ To target specific tasks register them at the bottom of the data object.
 grunt.registerTask('backup', ['mysqldump:stuff']);
 ```
 
-### Awesome Libraries Used
-
-+ [shelljs](https://github.com/arturadib/shelljs) - Portable Unix shell commands for Node.js.
-+ [node-archiver](https://github.com/ctalkington/node-archiver) - A streaming interface for archive generation.
-+ [each-async](https://github.com/sindresorhus/each-async) - Async concurrent iterator (async forEach).
-+ [bytes.js](https://github.com/visionmedia/bytes.js) - Node byte string parser.
-
 #### Running Verbose Mode 
 Specify the verbose mode parameter to log extra debugging information.
 
 ```shell
 grunt mysqldump:all --verbose
 ```
+
+### Awesome Libraries Used
+
++ [shelljs](https://github.com/arturadib/shelljs) - Portable Unix shell commands for Node.js.
++ [node-archiver](https://github.com/ctalkington/node-archiver) - A streaming interface for archive generation.
++ [each-async](https://github.com/sindresorhus/each-async) - Async concurrent iterator (async forEach).
++ [bytes.js](https://github.com/visionmedia/bytes.js) - Node byte string parser.
 
 ### Todo
 
