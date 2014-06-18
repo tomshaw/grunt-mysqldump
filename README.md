@@ -165,6 +165,7 @@ grunt mysqldump:all --verbose
 - Email: [tom@urlrider.com](mailto:tom@urlrider.com) 
 
 ### Release History
+ * 2014-06-17    v0.0.2    Version bump.
  * 2014-06-17    v0.0.1    Initial commit.
 
 ### License
