@@ -1,7 +1,7 @@
 {
   "name": "grunt-mysqldump",
   "description": "A MYSQL database backup dump grunt task.",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "homepage": "https://github.com/tomshaw/grunt-mysqldump",
   "author": {
     "name": "Tom Shaw",

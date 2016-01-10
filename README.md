@@ -118,6 +118,12 @@ Required: `false`
 
 You have the option of saving both the sql dump file and the compressed file. Only relevant when archiving.
 
+#### ignore
+
+Type: `Array`
+
+An array of database names to ignore when exporting. Valid when using a wildcard.
+
 ### Running 
 To run all tasks type `grunt mysqldump` 
 
@@ -135,12 +141,6 @@ Specify the verbose mode parameter to log extra debugging information.
 ```shell
 grunt mysqldump:all --verbose
 ```
-
-#### Ignore
-
-Type: `Array`
-
-An array of database names to ignore when exporting. Valid when using a wildcard.
 
 ### Awesome Libraries Used
 
