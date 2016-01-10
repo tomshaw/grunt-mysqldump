@@ -44,25 +44,13 @@ mysqldump: {
 },
 ```
 
-An example of multiple targets. To execute specific targets simply register a task and specify them.
+### Wildcard Usage
+To dump all available databases simply use an asterick aka wildcard. When using the wildcard flag you have the option to ignore specific databases by creating an ignore array.
 
 ```js
 db: grunt.file.readJSON('config/database.json'),    
 mysqldump: {
-  main: {
-    user: '<%= db.local.user %>',
-    pass: '<%= db.local.pass %>',
-    host: '<%= db.local.host %>',
-    port: '<%= db.local.port %>',
-    dest: 'backup/',
-    options: {
-      compress: false
-    },
-    databases: [
-      'my_forum'
-    ],
-  },
-  stuff: {
+  dist: {
     user: '<%= db.local.user %>',
     pass: '<%= db.local.pass %>',
     host: '<%= db.local.host %>',
@@ -75,10 +63,14 @@ mysqldump: {
       both: true
     },
     databases: [
-      'my_forum',
-      'my_blog',
-      'employees',
-      'sakila'
+      '*'
+    ],
+    ignore: [
+      'information_schema',
+      'performance_schema',
+      'phpmyadmin',
+      'mysql',
+      'sys'
     ],
   },
 },
@@ -150,6 +142,7 @@ grunt mysqldump:all --verbose
 + [node-archiver](https://github.com/ctalkington/node-archiver) - A streaming interface for archive generation.
 + [each-async](https://github.com/sindresorhus/each-async) - Async concurrent iterator (async forEach).
 + [bytes.js](https://github.com/visionmedia/bytes.js) - Node byte string parser.
++ [mysql](https://github.com/felixge/node-mysql) - A pure node.js JavaScript Client implementing the MySql protocol.
 
 ### Todo
 

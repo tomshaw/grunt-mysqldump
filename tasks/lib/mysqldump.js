@@ -14,6 +14,7 @@ var eachAsync = require('each-async');
 var zlib = require('zlib');
 var archiver = require('archiver');
 var bytes = require('bytes');
+var mysql = require('mysql');
 
 module.exports = function (grunt) {
 
@@ -22,27 +23,77 @@ module.exports = function (grunt) {
   };
 
   exports.gzip = function (files, done) {
-    exports.init(files, zlib.createGzip, '.gzip', done);
+    exports.process(files, function (databases) {
+      exports.init(databases, zlib.createGzip, '.gzip', done);
+    });
   };
 
   exports.deflate = function (files, done) {
-    exports.init(files, zlib.createDeflate, '.deflate', done);
+    exports.process(files, function (databases) {
+      exports.init(databases, zlib.createDeflate, '.deflate', done);
+    });
   };
 
   exports.deflateRaw = function (files, done) {
-    exports.init(files, zlib.createDeflateRaw, '.deflate', done);
+    exports.process(files, function (databases) {
+      exports.init(databases, zlib.createDeflateRaw, '.deflate', done);
+    });
   };
 
   exports.tar = function (files, done) {
-    exports.init(files, 'tar', '.tar', done);
+    exports.process(files, function (databases) {
+      exports.init(databases, 'tar', '.tar', done);
+    });
   };
 
   exports.tgz = function (files, done) {
-    exports.init(files, 'tgz', '.tgz', done);
+    exports.process(files, function (databases) {
+      exports.init(databases, 'tgz', '.tgz', done);
+    });
   };
 
   exports.zip = function (files, done) {
-    exports.init(files, 'zip', '.zip', done);
+    exports.process(files, function (databases) {
+      exports.init(databases, 'zip', '.zip', done);
+    });
+  };
+
+  exports.process = function (files, done) {
+
+    if (files.indexOf("*") > -1) {
+
+      var options = exports.options,
+        ignore = options.ignore;
+
+      var connection = mysql.createConnection({
+        host: options.host,
+        port: options.port,
+        user: options.user,
+        password: options.pass
+      });
+
+      connection.connect();
+
+      connection.query('SHOW DATABASES', function (err, rows, fields) {
+        if (err) throw err;
+
+        var databases = [];
+        for (var i = 0; i < rows.length; i++) {
+          var db = rows[i].Database;
+          if (ignore.indexOf(db) > -1) continue;
+          databases.push(db);
+        }
+
+        return done(databases);
+
+      });
+
+      connection.end();
+
+    } else {
+      return done(files);
+    }
+
   };
 
   exports.init = function (files, algorithm, extension, done) {
@@ -93,7 +144,7 @@ module.exports = function (grunt) {
       });
 
     });
-    
+
   };
 
   exports.compress = function (file, algorithm, extension, done) {
@@ -129,7 +180,9 @@ module.exports = function (grunt) {
         extension = '.tar.gz';
         algorithm = 'tar';
         exports.options.gzip = true;
-        exports.options.gzipOptions = {level: exports.options.level};
+        exports.options.gzipOptions = {
+          level: exports.options.level
+        };
       }
 
       var archive = archiver.create(algorithm, exports.options);

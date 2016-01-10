@@ -5,7 +5,6 @@
  * Copyright (c) 2014 Tom Shaw
  * Licensed under the MIT license.
  */
- 
 'use strict';
 
 module.exports = function (grunt) {
@@ -27,6 +26,12 @@ module.exports = function (grunt) {
       level: 1,
       both: false
     });
+
+    if (config.hasOwnProperty("ignore")) {
+      mysqldump.options.ignore = config.ignore;
+    } else {
+      mysqldump.options.ignore = [];
+    }
 
     if (mysqldump.options.compress) {
       mysqldump[mysqldump.options.algorithm](config.databases, this.async());
