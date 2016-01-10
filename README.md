@@ -3,7 +3,7 @@
 > Grunt plugin for dumping and archiving MySQL databases. Supports exporting and archiving multiple databases in a single operation. Runs asynchronously and extremely fast. Outputs export and compression information as each operation completes.
 
 ## Getting Started
-This plugin requires Grunt `~0.4.1`
+This plugin requires Grunt `>=0.4.1`
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
@@ -45,7 +45,7 @@ mysqldump: {
 ```
 
 ### Wildcard Usage
-To dump all available databases simply use an asterick aka wildcard. When using the wildcard flag you have the option to ignore specific databases by creating an ignore array.
+To dump all available databases simply use an asterisk aka wildcard. When using the wildcard flag you have the option to ignore specific databases by creating an ignore array.
 
 ```js
 db: grunt.file.readJSON('config/database.json'),    
@@ -136,6 +136,12 @@ Specify the verbose mode parameter to log extra debugging information.
 grunt mysqldump:all --verbose
 ```
 
+#### Ignore
+
+Type: `Array`
+
+An array of database names to ignore when exporting. Valid when using a wildcard.
+
 ### Awesome Libraries Used
 
 + [shelljs](https://github.com/arturadib/shelljs) - Portable Unix shell commands for Node.js.
@@ -156,10 +162,6 @@ grunt mysqldump:all --verbose
 ### Questions?
 
 - Email: [tom@urlrider.com](mailto:tom@urlrider.com) 
-
-### Release History
- * 2014-06-17    v0.0.2    Version bump.
- * 2014-06-17    v0.0.1    Initial commit.
 
 ### License
 
