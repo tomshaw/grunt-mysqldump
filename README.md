@@ -1,6 +1,6 @@
 # grunt-mysqldump
 
-> Grunt plugin for dumping and archiving MySQL databases. Supports exporting and archiving multiple databases in a single operation. Runs asynchronously and extremely fast. Outputs export and compression information as each operation completes.
+> Grunt plugin for dumping and archiving MySQL databases. Supports exporting and archiving multiple databases in a single operation. Runs asynchronously and extremely fast. Outputs export and compression information as each operation completes. Tested on moderate to large size databases without any problems. 
 
 ## Getting Started
 This plugin requires Grunt `>=0.4.1`
