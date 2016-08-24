@@ -75,6 +75,37 @@ mysqldump: {
   },
 },
 ```
+### Arguments
+
+#### user
+
+The database user.
+
+#### pass
+
+The user's password.
+
+#### host
+
+The host of the database.
+
+#### port
+
+The port where the database is running, mostly 3306.
+
+#### dest
+
+The destination folder to write the dump to.
+
+#### type
+
+Type: `String`
+
+Default: `both`
+
+Required: `false`
+
+The dump type. Currently supports `both`, `data` and `schema`.
 
 ### Options
 
@@ -96,7 +127,7 @@ Default: `zip`
 
 Required: `false`
 
-Curretly supports `gzip`, `deflate`, `deflateRaw`, `tar`, `tgz` and `zip`.
+Currently supports `gzip`, `deflate`, `deflateRaw`, `tar`, `tgz` and `zip`.
 
 #### level
 
