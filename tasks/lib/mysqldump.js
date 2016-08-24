@@ -118,7 +118,7 @@ module.exports = function (grunt) {
           host: options.host,
           port: options.port,
           dest: path,
-		      type: options.type!='both'?(options.type=='schema'?'-d':(options.type=='data'?'--no-create-info':'')):''
+          type: options.type!='both'?(options.type=='schema'?'-d':(options.type=='data'?'--no-create-info':'')):''
         }
       });
 
