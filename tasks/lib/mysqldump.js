@@ -110,14 +110,15 @@ module.exports = function (grunt) {
 
       grunt.file.mkdir(folder);
 
-      var cmd = grunt.template.process("mysqldump -h <%= host %> -P <%= port %> -u <%= user %> <%= pass %> <%= database %> -r <%= dest %>", {
+      var cmd = grunt.template.process("mysqldump -h <%= host %> -P <%= port %> -u <%= user %> <%= pass %> <%= type %> <%= database %> -r <%= dest %>", {
         data: {
           user: options.user,
           pass: '--password="' + options.pass + '"',
           database: file,
           host: options.host,
           port: options.port,
-          dest: path
+          dest: path,
+          type: options.type!='both'?(options.type=='schema'?'-d':(options.type=='data'?'--no-create-info':'')):''
         }
       });
 
