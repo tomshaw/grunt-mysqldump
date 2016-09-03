@@ -98,16 +98,6 @@ The port where the database is running, mostly 3306.
 
 The destination folder to write the dump to.
 
-#### type
-
-Type: `String`
-
-Default: `both`
-
-Required: `false`
-
-Currently supports `data only`, `schema only` or `both`.
-
 ### Options
 
 #### compress
@@ -149,6 +139,16 @@ Default: `false`
 Required: `false`
 
 You have the option of saving both the sql dump file and the compressed file. Only relevant when archiving.
+
+#### type
+
+Type: `String`
+
+Default: `both`
+
+Required: `false`
+
+Currently supports `data only`, `schema only` or `both`.
 
 #### ignore
 
