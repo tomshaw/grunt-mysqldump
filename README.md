@@ -105,7 +105,7 @@ Default: `both`
 
 Required: `false`
 
-The dump type. Currently supports `both`, `data` and `schema`.
+The dump type. Currently supports `data only`, `schema only` or `both`.
 
 ### Options
 
