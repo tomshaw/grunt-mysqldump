@@ -70,7 +70,8 @@ mysqldump: {
       'performance_schema',
       'phpmyadmin',
       'mysql',
-      'sys'
+      'sakila',
+      'world'
     ],
   },
 },
