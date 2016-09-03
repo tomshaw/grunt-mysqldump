@@ -105,7 +105,7 @@ Default: `both`
 
 Required: `false`
 
-The dump type. Currently supports `data only`, `schema only` or `both`.
+Currently supports `data only`, `schema only` or `both`.
 
 ### Options
 
@@ -157,21 +157,6 @@ An array of database names to ignore when exporting. Valid when using a wildcard
 
 ### Running 
 To run all tasks type `grunt mysqldump` 
-
-#### Running Specific Tasks
-
-To target specific tasks register them at the bottom of the data object.
-
-```
-grunt.registerTask('backup', ['mysqldump:stuff']);
-```
-
-#### Running Verbose Mode 
-Specify the verbose mode parameter to log extra debugging information.
-
-```shell
-grunt mysqldump:all --verbose
-```
 
 ### Awesome Libraries Used
 
