@@ -2,7 +2,7 @@
  * grunt-mysqldump
  * https://github.com/tomshaw/grunt-mysqldump
  *
- * Copyright (c) 2014 Tom Shaw
+ * Copyright (c) 2016 Tom Shaw
  * Licensed under the MIT license.
  */
 'use strict';
