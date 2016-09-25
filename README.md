@@ -167,14 +167,6 @@ To run all tasks type `grunt mysqldump`
 + [bytes.js](https://github.com/visionmedia/bytes.js) - Node byte string parser.
 + [mysql](https://github.com/felixge/node-mysql) - A pure node.js JavaScript Client implementing the MySql protocol.
 
-### Todo
-
-- Add some tests.
-
-### If you want to be awesome.
-
-- Fork the project and contribute add tests!
-
 ### License
 
 ### (The MIT License)
