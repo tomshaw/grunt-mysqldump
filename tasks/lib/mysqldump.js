@@ -15,6 +15,8 @@ var zlib = require('zlib');
 var archiver = require('archiver');
 var bytes = require('bytes');
 var mysql = require('mysql');
+var _ = require('lodash');
+
 
 module.exports = function (grunt) {
 
@@ -150,7 +152,7 @@ module.exports = function (grunt) {
 
   exports.compress = function (file, algorithm, extension, done) {
 
-    if (grunt.util._.include(['.gzip', '.deflate', '.deflateRaw'], extension) === true) {
+    if (_.include(['.gzip', '.deflate', '.deflateRaw'], extension) === true) {
 
       if (extension === '.gzip') {
         extension = '.gz';
@@ -175,7 +177,7 @@ module.exports = function (grunt) {
 
       srcStream.pipe(compressor).pipe(destStream);
 
-    } else if (grunt.util._.include(['.zip', '.tar', '.tgz'], extension) === true) {
+    } else if (_.include(['.zip', '.tar', '.tgz'], extension) === true) {
 
       if (extension === '.tgz') {
         extension = '.tar.gz';
