@@ -150,7 +150,7 @@ module.exports = function (grunt) {
 
   exports.compress = function (file, algorithm, extension, done) {
 
-    if (grunt.util._.include(['.gzip', '.deflate', '.deflateRaw'], extension) === true) {
+    if (grunt.util._.includes(['.gzip', '.deflate', '.deflateRaw'], extension) === true) {
 
       if (extension === '.gzip') {
         extension = '.gz';
@@ -175,7 +175,7 @@ module.exports = function (grunt) {
 
       srcStream.pipe(compressor).pipe(destStream);
 
-    } else if (grunt.util._.include(['.zip', '.tar', '.tgz'], extension) === true) {
+    } else if (grunt.util._.includes(['.zip', '.tar', '.tgz'], extension) === true) {
 
       if (extension === '.tgz') {
         extension = '.tar.gz';
