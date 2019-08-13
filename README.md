@@ -1,5 +1,11 @@
 # grunt-mysqldump
 
+[![Version npm](https://img.shields.io/npm/v/grunt-mysqldump.svg)](https://www.npmjs.com/package/grunt-mysqldump)
+[![Downloads npm](https://img.shields.io/npm/dt/grunt-mysqldump.svg)](https://www.npmjs.com/package/grunt-mysqldump)
+[![MIT license](https://img.shields.io/npm/l/grunt-mysqldump.svg)](https://opensource.org/licenses/MIT)
+[![GitHub stars](https://img.shields.io/github/stars/tomshaw/grunt-mysqldump.svg?style=social&label=Star)](https://github.com/tomshaw/grunt-mysqldump)
+[![JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
+
 > Grunt plugin for dumping and archiving MySQL databases. Supports exporting and archiving multiple databases in a single operation. Runs asynchronously and extremely fast. Outputs export and compression information as each operation completes. Tested on moderate to large size databases without any problems. 
 
 ## Getting Started
