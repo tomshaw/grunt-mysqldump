@@ -18,6 +18,12 @@ Enabled the plugin inside your Gruntfile:
 grunt.loadNpmTasks('grunt-mysqldump');
 ```
 
+To run the task issue the following command.
+
+```sh
+grunt mysqldump
+```
+
 ## The MySQL Dump Task
 In your project's Gruntfile, add a section named `mysqldump` to the data object passed into `grunt.initConfig()`.
 
@@ -78,6 +84,8 @@ mysqldump: {
   },
 },
 ```
+---
+
 ### Arguments
 
 #### user
@@ -148,8 +156,7 @@ Type: `Array`
 
 An array of database names to ignore when exporting. Valid when using a wildcard.
 
-### Running 
-To run all tasks type `grunt mysqldump` 
+---
 
 ### Awesome Libraries Used
 
