@@ -167,7 +167,6 @@ An array of databases to ignore when using a `databases` wildcard.
 
 + [shelljs](https://github.com/arturadib/shelljs) - Portable Unix shell commands for Node.js.
 + [node-archiver](https://github.com/ctalkington/node-archiver) - A streaming interface for archive generation.
-+ [each-async](https://github.com/sindresorhus/each-async) - Async concurrent iterator (async forEach).
 + [bytes.js](https://github.com/visionmedia/bytes.js) - Node byte string parser.
 + [mysql](https://github.com/felixge/node-mysql) - A pure node.js JavaScript Client implementing the MySql protocol.
 

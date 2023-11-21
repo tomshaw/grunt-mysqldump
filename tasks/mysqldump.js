@@ -40,7 +40,7 @@ module.exports = function (grunt) {
     if (mysqldump.options.compress) {
       mysqldump[mysqldump.options.algorithm](config.databases, this.async());
     } else {
-      mysqldump['sql'](mysqldump.options.databases, this.async());
+      mysqldump['sql'](config.databases, this.async());
     }
 
   });
