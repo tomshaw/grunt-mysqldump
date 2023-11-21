@@ -71,6 +71,8 @@ module.exports = function (grunt) {
       var options = exports.options;
       var forget = options.forget;
 
+      console.log('forget', forget);
+
       var connection = mysql.createConnection({
         host: options.host,
         port: options.port,
