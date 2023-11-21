@@ -29,6 +29,10 @@ module.exports = function (grunt) {
       databases: []
     });
 
+    if (config.hasOwnProperty("databases")) {
+      mysqldump.options.databases = config.databases;
+    }
+
     if (config.hasOwnProperty("forget")) {
       mysqldump.options.forget = config.forget;
     }
@@ -36,7 +40,7 @@ module.exports = function (grunt) {
     if (mysqldump.options.compress) {
       mysqldump[mysqldump.options.algorithm](config.databases, this.async());
     } else {
-      mysqldump['sql'](config.databases, this.async());
+      mysqldump['sql'](mysqldump.options.databases, this.async());
     }
 
   });
