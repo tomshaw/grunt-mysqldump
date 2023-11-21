@@ -6,25 +6,26 @@
 
 > Grunt plugin for dumping and archiving MySQL databases. Supports exporting and archiving multiple databases in a single operation. Runs asynchronously and extremely fast. Outputs export and compression information as each operation completes. Tested on moderate to large size databases without any problems. 
 
-If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
+Install the plugin with this command:
 
 ```shell
 npm install grunt-mysqldump --save-dev
 ```
 
-Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+Enabled the plugin inside your Gruntfile:
 
 ```js
 grunt.loadNpmTasks('grunt-mysqldump');
 ```
 
-## The "mysqldump" task
-
-### Overview
+## The MySQL Dump Task
 In your project's Gruntfile, add a section named `mysqldump` to the data object passed into `grunt.initConfig()`.
 
 ```js
 db: grunt.file.readJSON('config/database.json'),    
+```
+
+```js  
 mysqldump: {
   dist: {
     user: '<%= db.local.user %>',
@@ -45,10 +46,11 @@ mysqldump: {
 ```
 
 ### Wildcard Usage
-To dump all available databases simply use an asterisk aka wildcard. When using the wildcard flag you have the option to ignore specific databases by creating an ignore array.
+Dump all your databases by using an asterisk aka wildcard. 
 
-```js
-db: grunt.file.readJSON('config/database.json'),    
+> Note: When using the wildcard flag you have the option to ignore specific databases by creating an ignore array.
+
+```js 
 mysqldump: {
   dist: {
     user: '<%= db.local.user %>',
