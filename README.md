@@ -50,6 +50,7 @@ mysqldump: {
   },
 },
 ```
+Example config/database.json
 
 ```json
 {
