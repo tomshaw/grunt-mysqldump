@@ -25,7 +25,7 @@ module.exports = function (grunt) {
       compress: false,
       algorithm: 'zip',
       level: 1,
-      both: false
+      data_only: false
     });
 
     if (config.hasOwnProperty("ignore")) {
@@ -37,7 +37,7 @@ module.exports = function (grunt) {
     if (mysqldump.options.compress) {
       mysqldump[mysqldump.options.algorithm](config.databases, this.async());
     } else {
-      mysqldump.init(config.databases, false, '.sql', this.async());
+      mysqldump['sql'](config.databases, this.async());
     }
 
   });

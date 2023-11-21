@@ -1,12 +1,20 @@
 {
   "name": "grunt-mysqldump",
   "description": "A MYSQL database backup grunt task.",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "homepage": "https://github.com/tomshaw/grunt-mysqldump",
+  "keywords": [
+    "gruntplugin",
+    "mysql",
+    "database",
+    "export",
+    "backup",
+    "sql"
+  ],
   "author": {
     "name": "Tom Shaw",
-    "email": "tom@urlrider.com",
-    "url": "http://urlrider.com"
+    "email": "tom@tomshaw.us",
+    "url": "http://tomshaw.us"
   },
   "repository": {
     "type": "git",
@@ -17,32 +25,21 @@
   },
   "license": "MIT",
   "main": "Gruntfile.js",
-  "engines": {
-    "node": ">= 0.8.0"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "archiver": "^3.1.1",
-    "bytes": "^2.2.0",
-    "each-async": "^0.1.1",
-    "mysql": "^2.17.1",
-    "shelljs": "~0.1.4"
+    "adm-zip": "^0.5.10",
+    "archiver": "^6.0.1",
+    "bytes": "^3.1.2",
+    "each-async": "^2.0.0",
+    "mysql": "^2.18.1",
+    "shelljs": "^0.8.5"
   },
   "devDependencies": {
-    "diff": ">=3.5.0",
-    "grunt": "^1.0.4",
-    "grunt-contrib-clean": "^0.6.0",
-    "grunt-contrib-jshint": "^2.1.0",
-    "grunt-contrib-nodeunit": "^2.0.0"
-  },
-  "peerDependencies": {
-    "grunt": ">=0.4.0"
-  },
-  "keywords": [
-    "gruntplugin",
-    "mysql",
-    "database",
-    "export",
-    "backup",
-    "sql"
-  ]
+    "grunt": "^1.6.1",
+    "grunt-contrib-clean": "^2.0.1",
+    "grunt-contrib-jshint": "^3.2.0",
+    "grunt-contrib-nodeunit": "^5.0.0"
+  }
 }

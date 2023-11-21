@@ -6,9 +6,6 @@
 
 > Grunt plugin for dumping and archiving MySQL databases. Supports exporting and archiving multiple databases in a single operation. Runs asynchronously and extremely fast. Outputs export and compression information as each operation completes. Tested on moderate to large size databases without any problems. 
 
-## Getting Started
-This plugin requires Grunt `>=0.4.1`
-
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
@@ -34,15 +31,14 @@ mysqldump: {
     pass: '<%= db.local.pass %>',
     host: '<%= db.local.host %>',
     port: '<%= db.local.port %>',
-    dest: 'backup/',
+    dest: 'exports/',
     options: {
       compress: 'gzip'
     },
     databases: [
-      'my_forum',
-      'my_blog',
-      'employees',
-      'sakila'
+      'sakila',
+      'world'
+      'employees'
     ],
   },
 },
@@ -59,12 +55,12 @@ mysqldump: {
     pass: '<%= db.local.pass %>',
     host: '<%= db.local.host %>',
     port: '<%= db.local.port %>',
-    dest: 'backup/',
+    dest: 'backups/',
     options: {
       compress: true,
       algorithm: 'zip',
       level: 5,
-      both: true
+      data_only: true
     },
     databases: [
       '*'
@@ -96,7 +92,7 @@ The host of the database.
 
 #### port
 
-The port where the database is running, mostly 3306.
+The port where the database is running normally 3306.
 
 #### dest
 
@@ -134,25 +130,15 @@ Required: `false`
 
 Sets the level of archive compression.
 
-#### both
+#### data_only
 
 Type: `Boolean`
 
-Default: `false`
+Default: false
 
 Required: `false`
 
-You have the option of saving both the sql dump file and the compressed file. Only relevant when archiving.
-
-#### type
-
-Type: `String`
-
-Default: `both`
-
-Required: `false`
-
-Currently supports `data only`, `schema only` or `both`.
+Suppress the `CREATE TABLE` statements from the output.
 
 #### ignore
 
@@ -173,8 +159,4 @@ To run all tasks type `grunt mysqldump`
 
 ## License
 
-See the bundled LICENSE file for details.
-
-## Author
-
-Tom Shaw (@urlrider)
+The MIT License (MIT). See [License File](LICENSE) for more information.

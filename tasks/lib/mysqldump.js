@@ -58,6 +58,12 @@ module.exports = function (grunt) {
     });
   };
 
+  exports.sql = function (files, done) {
+    exports.process(files, function (databases) {
+      exports.init(databases, 'zip', '.zip', done);
+    });
+  };
+
   exports.process = function (files, done) {
 
     if (files.indexOf("*") > -1) {
@@ -100,27 +106,27 @@ module.exports = function (grunt) {
 
     eachAsync(files, function (file, index, done) {
 
-      var options = exports.options,
-        folder = options.dest,
-        path = options.dest + file + '.sql';
+      var options = exports.options;
+      var folder = options.dest;
+      var dest = options.dest + file + '.sql';
 
-      if (grunt.file.isDir(path)) {
+      if (grunt.file.isDir(dest)) {
         return done();
       }
 
       grunt.file.mkdir(folder);
 
-      var cmd = grunt.template.process("mysqldump -h <%= host %> -P <%= port %> -u <%= user %> <%= pass %> <%= type %> <%= database %> -r <%= dest %>", {
-        data: {
-          user: options.user,
-          pass: '--password="' + options.pass + '"',
-          database: file,
-          host: options.host,
-          port: options.port,
-          dest: path,
-          type: options.type!='both'?(options.type=='schema'?'-d':(options.type=='data'?'--no-create-info':'')):''
-        }
-      });
+      var args = {
+        user: options.user,
+        pass: '--password="' + options.pass + '"',
+        database: file,
+        host: options.host,
+        port: options.port,
+        dest: dest,
+        type: (options.data_only) ? '--no-create-info' : ''
+      }
+
+      var cmd = grunt.template.process("mysqldump -h <%= host %> -P <%= port %> -u <%= user %> <%= pass %> <%= type %> <%= database %> -r <%= dest %>", { data: args });
 
       shell.exec(cmd, {
         silent: true
@@ -128,16 +134,13 @@ module.exports = function (grunt) {
 
         if (code !== 0) {
           grunt.log.writeln('Warning: ' + String(file).cyan + ' code: (' + String(code).red + ') output: (' + String(output).red + ')');
-          exports.delete(path);
           return done();
         }
 
-        if (exports.options.both === true) {
-          grunt.log.writeln('Exported: ' + String(path).cyan + ' (' + exports.getSize(path) + ')');
-        }
+        grunt.log.writeln('Exported: ' + String(dest).cyan + ' (' + exports.getSize(dest) + ')');
 
         if (options.compress) {
-          exports.compress(path, algorithm, extension, done);
+          exports.compress(dest, algorithm, extension, done);
         } else {
           return done();
         }
@@ -145,7 +148,6 @@ module.exports = function (grunt) {
       });
 
     });
-
   };
 
   exports.compress = function (file, algorithm, extension, done) {
@@ -167,9 +169,7 @@ module.exports = function (grunt) {
 
       destStream.on('close', function () {
         grunt.log.writeln('Generated file: ' + String(file + extension).cyan + ' (' + exports.getSize(file + extension) + ')');
-        if (exports.options.both === false) {
-          exports.delete(file);
-        }
+        exports.delete(file);
         return done();
       });
 
@@ -207,9 +207,7 @@ module.exports = function (grunt) {
       destStream.on('close', function () {
         var size = archive.pointer();
         grunt.log.writeln('Archived: ' + String(file + extension).cyan + ' (' + bytes(size) + ')');
-        if (exports.options.both === false) {
-          exports.delete(file);
-        }
+        exports.delete(file);
         return done();
       });
 
@@ -234,7 +232,7 @@ module.exports = function (grunt) {
     if (grunt.file.isFile(file)) {
       try {
         grunt.file.delete(file);
-      } catch (e) {}
+      } catch (e) { }
     }
   };
 
@@ -243,7 +241,7 @@ module.exports = function (grunt) {
     if (typeof file === 'string') {
       try {
         size = fs.statSync(file).size;
-      } catch (e) {}
+      } catch (e) { }
     }
     return bytes(size);
   };
