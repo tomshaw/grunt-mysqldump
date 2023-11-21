@@ -172,12 +172,19 @@ An array of databases to ignore when using a `databases` wildcard.
 
 - Type: `Array`
 
-## Libraries Used
+## 📚 Libraries Used
 
-+ [shelljs](https://github.com/arturadib/shelljs) - Portable Unix shell commands for Node.js.
-+ [node-archiver](https://github.com/ctalkington/node-archiver) - A streaming interface for archive generation.
-+ [bytes.js](https://github.com/visionmedia/bytes.js) - Node byte string parser.
-+ [mysql](https://github.com/felixge/node-mysql) - A pure node.js JavaScript Client implementing the MySql protocol.
+This project wouldn't be possible without these wonderful libraries:
+
+- **shelljs**: Provides portable Unix shell commands for Node.js. It's our go-to library for handling shell commands.
+
+- **node-archiver**: A powerful library that provides a streaming interface for archive generation. It's what we use to create the database dump archives.
+
+- **bytes.js**: This library helps us parse byte strings in Node.js. It's a small but crucial part of our toolkit.
+
+- **mysql**: A pure Node.js JavaScript client implementing the MySQL protocol. It's the backbone of our MySQL operations.
+
+We're grateful to the developers and contributors of these libraries. 🙏
 
 ## License
 
