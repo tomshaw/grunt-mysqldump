@@ -137,7 +137,7 @@ Currently supports `gzip`, `deflate`, `deflateRaw`, `tar`, `tgz` and `zip`.
 Sets the `zlib` compression level. This is an integer in the range of 0 to 9. 
 
 - Type: `Integer`
-- Default: `1`
+- Default: `8`
 - Required: `false`
 
 Here's what each level means:
