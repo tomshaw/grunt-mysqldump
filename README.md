@@ -102,38 +102,42 @@ mysqldump: {
 },
 ```
 
-### Arguments
+## Configuration Parameters
 
-#### user
-The database user.
+This section provides details about the configuration parameters that you can set for the `grunt-mysqldump` task.
 
-#### pass
-The user's password.
+### `user`
+This parameter specifies the username for the MySQL database connection. 
 
-#### host
-The host of the database.
+### `pass`
+This parameter specifies the password associated with the username for the MySQL database connection.
 
-#### port
-The port where the database is running normally 3306.
+### `host`
+This parameter specifies the hostname or IP address of the machine where the MySQL server is running.
 
-#### dest
-The destination folder to write the dump to.
+### `port`
+This parameter specifies the port number on which the MySQL server is listening for connections. The default MySQL port number is `3306`.
 
-### Options
+### `dest`
+This parameter specifies the destination directory where the database dump files will be written. Please ensure that this directory has the necessary write permissions.
 
-#### compress
+### `compress`
+
 Set to false for no compression. Will only perform a mysqldump of the target database files.
+
 - Type: `Boolean`
 - Default: `false`
 - Required: `false`
 
-#### algorithm
+### `algorithm`
+
 Currently supports `gzip`, `deflate`, `deflateRaw`, `tar`, `tgz` and `zip`.
+
 - Type: `String`
 - Default: `zip`
 - Required: `false`
 
-#### level
+### `level`
 Sets the `zlib` compression level. This is an integer in the range of 0 to 9. 
 
 - Type: `Integer`
@@ -149,18 +153,23 @@ Here's what each level means:
 | **2-8** | A compromise between speed and compression |
 | **9** | Best compression |
 
-#### data_only
+### `data_only`
+
 Suppress the `CREATE TABLE` statements from the output.
+
 - Type: `Boolean`
 - Default: `false`
 - Required: `false`
 
-#### databases
+### `databases`
+
 An array of databases to export. 
 - Type: `Array`
 
-#### forget
+### `forget`
+
 An array of databases to ignore when using a `databases` wildcard.
+
 - Type: `Array`
 
 ## Libraries Used
