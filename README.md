@@ -156,11 +156,11 @@ Suppress the `CREATE TABLE` statements from the output.
 - Required: `false`
 
 #### databases
-An array of database names to export. 
+An array of databases to export. 
 - Type: `Array`
 
 #### forget
-An array of database names to ignore when using a `databases` wildcard.
+An array of databases to ignore when using a `databases` wildcard.
 - Type: `Array`
 
 ## Libraries Used
