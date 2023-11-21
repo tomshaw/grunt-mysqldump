@@ -60,7 +60,7 @@ module.exports = function (grunt) {
 
   exports.sql = function (files, done) {
     exports.process(files, function (databases) {
-      exports.init(databases, 'zip', '.zip', done);
+      exports.init(databases, 'sql', '.sql', done);
     });
   };
 
@@ -68,8 +68,8 @@ module.exports = function (grunt) {
 
     if (files.indexOf("*") > -1) {
 
-      var options = exports.options,
-        ignore = options.ignore;
+      var options = exports.options;
+      var forget = options.forget;
 
       var connection = mysql.createConnection({
         host: options.host,
@@ -86,7 +86,7 @@ module.exports = function (grunt) {
         var databases = [];
         for (var i = 0; i < rows.length; i++) {
           var db = rows[i].Database;
-          if (ignore.indexOf(db) > -1) continue;
+          if (forget.indexOf(db) > -1) continue;
           databases.push(db);
         }
 
@@ -123,10 +123,10 @@ module.exports = function (grunt) {
         host: options.host,
         port: options.port,
         dest: dest,
-        type: (options.data_only) ? '--no-create-info' : ''
+        data: (options.data_only) ? '--no-create-info' : ''
       }
 
-      var cmd = grunt.template.process("mysqldump -h <%= host %> -P <%= port %> -u <%= user %> <%= pass %> <%= type %> <%= database %> -r <%= dest %>", { data: args });
+      var cmd = grunt.template.process("mysqldump -h <%= host %> -P <%= port %> -u <%= user %> <%= pass %> <%= data %> <%= database %> -r <%= dest %>", { data: args });
 
       shell.exec(cmd, {
         silent: true

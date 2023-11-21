@@ -4,7 +4,9 @@
 [![Downloads npm](https://img.shields.io/npm/dt/grunt-mysqldump.svg)](https://www.npmjs.com/package/grunt-mysqldump)
 [![MIT license](https://img.shields.io/npm/l/grunt-mysqldump.svg)](https://opensource.org/licenses/MIT)
 
-> Grunt plugin for dumping and archiving MySQL databases. Supports exporting and archiving multiple databases in a single operation. Runs asynchronously and extremely fast. Outputs export and compression information as each operation completes. Tested on moderate to large size databases without any problems. 
+Grunt-mysqldump is a Grunt plugin for dumping and archiving MySQL databases. It supports exporting and archiving multiple databases in a single operation, runs asynchronously, and is extremely fast. Outputs export and compression information as each operation completes. Tested on moderate to large size databases without any problems.
+
+## Installation
 
 Install the plugin with this command:
 
@@ -12,19 +14,20 @@ Install the plugin with this command:
 npm install grunt-mysqldump --save-dev
 ```
 
-Enabled the plugin inside your Gruntfile:
+Enable the plugin inside your Gruntfile:
 
 ```js
 grunt.loadNpmTasks('grunt-mysqldump');
 ```
 
-To run the task issue the following command.
+To run the task, issue the following command:
 
 ```sh
 grunt mysqldump
 ```
 
-## The MySQL Dump Task
+## Configuration
+
 In your project's Gruntfile, add a section named `mysqldump` to the data object passed into `grunt.initConfig()`.
 
 ```js
@@ -44,12 +47,13 @@ mysqldump: {
     },
     databases: [
       'sakila',
-      'world'
+      'world',
       'employees'
     ],
   },
 },
 ```
+
 Example config/database.json
 
 ```json
@@ -64,9 +68,10 @@ Example config/database.json
 ```
 
 ### Wildcard Usage
+
 Dump all your databases by using an asterisk aka wildcard. 
 
-> Note: When using the wildcard flag you have the option to ignore specific databases by creating an ignore array.
+> Note: When using the wildcard flag you have the option to ignore specific databases by creating a forget array.
 
 ```js 
 mysqldump: {
@@ -85,7 +90,7 @@ mysqldump: {
     databases: [
       '*'
     ],
-    ignore: [
+    forget: [
       'information_schema',
       'performance_schema',
       'phpmyadmin',
@@ -96,81 +101,69 @@ mysqldump: {
   },
 },
 ```
----
 
 ### Arguments
 
 #### user
-
 The database user.
 
 #### pass
-
 The user's password.
 
 #### host
-
 The host of the database.
 
 #### port
-
 The port where the database is running normally 3306.
 
 #### dest
-
 The destination folder to write the dump to.
 
 ### Options
 
 #### compress
-
-Type: `Boolean`
-
-Default: `false`
-
-Required: `false`
-
 Set to false for no compression. Will only perform a mysqldump of the target database files.
+- Type: `Boolean`
+- Default: `false`
+- Required: `false`
 
 #### algorithm
-
-Type: `String`
-
-Default: `zip`
-
-Required: `false`
-
 Currently supports `gzip`, `deflate`, `deflateRaw`, `tar`, `tgz` and `zip`.
+- Type: `String`
+- Default: `zip`
+- Required: `false`
 
 #### level
+Sets the `zlib` compression level. This is an integer in the range of 0 to 9. 
 
-Type: `Integer`
+- Type: `Integer`
+- Default: `1`
+- Required: `false`
 
-Default: `1`
+Here's what each level means:
 
-Required: `false`
-
-Sets the level of archive compression.
+| Level | Description |
+|-------|-------------|
+| **0** | No compression |
+| **1** | Best speed |
+| **2-8** | A compromise between speed and compression |
+| **9** | Best compression |
 
 #### data_only
-
-Type: `Boolean`
-
-Default: false
-
-Required: `false`
-
 Suppress the `CREATE TABLE` statements from the output.
+- Type: `Boolean`
+- Default: `false`
+- Required: `false`
 
-#### ignore
+#### databases
+An array of database names to export. 
+- Type: `Array`
 
-Type: `Array`
+#### forget
+An array of database names to ignore when using a `databases` wildcard.
+- Type: `Array`
 
-An array of database names to ignore when exporting. Valid when using a wildcard.
-
----
-
-### Awesome Libraries Used
+## Libraries Used
 
 + [shelljs](https://github.com/arturadib/shelljs) - Portable Unix shell commands for Node.js.
 + [node-archiver](https://github.com/ctalkington/node-archiver) - A streaming interface for archive generation.
@@ -181,3 +174,4 @@ An array of database names to ignore when exporting. Valid when using a wildcard
 ## License
 
 The MIT License (MIT). See [License File](LICENSE) for more information.
+```

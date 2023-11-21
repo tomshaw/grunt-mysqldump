@@ -21,18 +21,13 @@ module.exports = function (grunt) {
       host: config.host,
       port: config.port,
       dest: config.dest,
-      type: config.type,
       compress: false,
       algorithm: 'zip',
-      level: 1,
-      data_only: false
+      level: 8,
+      data_only: false,
+      forget: ['databases_to_ignore'],
+      databases: ['database1', 'database2']
     });
-
-    if (config.hasOwnProperty("ignore")) {
-      mysqldump.options.ignore = config.ignore;
-    } else {
-      mysqldump.options.ignore = [];
-    }
 
     if (mysqldump.options.compress) {
       mysqldump[mysqldump.options.algorithm](config.databases, this.async());
