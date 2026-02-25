@@ -6,6 +6,12 @@
 
 Grunt-mysqldump is a Grunt plugin for dumping and archiving MySQL databases. It supports exporting and archiving multiple databases in a single operation, runs asynchronously, and is extremely fast. Outputs export and compression information as each operation completes. Tested on moderate to large size databases without any problems.
 
+## Requirements
+
+- Node.js >= 18
+- Grunt >= 1.0.0
+- `mysqldump` CLI available on your system PATH
+
 ## Installation
 
 Install the plugin with this command:
@@ -31,10 +37,10 @@ grunt mysqldump
 In your project's Gruntfile, add a section named `mysqldump` to the data object passed into `grunt.initConfig()`.
 
 ```js
-db: grunt.file.readJSON('config/database.json'),    
+db: grunt.file.readJSON('config/database.json'),
 ```
 
-```js  
+```js
 mysqldump: {
   dist: {
     user: '<%= db.local.user %>',
@@ -69,11 +75,11 @@ Example config/database.json
 
 ### Wildcard Usage
 
-Dump all your databases by using an asterisk aka wildcard. 
+Dump all your databases by using an asterisk aka wildcard.
 
 > Note: When using the wildcard flag you have the option to ignore specific databases by creating a forget array.
 
-```js 
+```js
 mysqldump: {
   dist: {
     user: '<%= db.local.user %>',
@@ -107,7 +113,7 @@ mysqldump: {
 This section provides details about the configuration parameters that you can set for the `grunt-mysqldump` task.
 
 ### `user`
-This parameter specifies the username for the MySQL database connection. 
+This parameter specifies the username for the MySQL database connection.
 
 ### `pass`
 This parameter specifies the password associated with the username for the MySQL database connection.
@@ -138,7 +144,7 @@ Currently supports `gzip`, `deflate`, `deflateRaw`, `tar`, `tgz` and `zip`.
 - Required: `false`
 
 ### `level`
-Sets the `zlib` compression level. This is an integer in the range of 0 to 9. 
+Sets the `zlib` compression level. This is an integer in the range of 0 to 9.
 
 - Type: `Integer`
 - Default: `8`
@@ -163,7 +169,7 @@ Suppress the `CREATE TABLE` statements from the output.
 
 ### `databases`
 
-An array of databases to export. 
+An array of databases to export.
 - Type: `Array`
 
 ### `forget`
@@ -172,21 +178,24 @@ An array of databases to ignore when using a `databases` wildcard.
 
 - Type: `Array`
 
-## 📚 Libraries Used
+## Development
 
-This project wouldn't be possible without these wonderful libraries:
+The source is written in TypeScript under `src/tasks/`. Compiled output goes to `tasks/`.
 
-- **shelljs**: Provides portable Unix shell commands for Node.js. It's our go-to library for handling shell commands.
+```sh
+npm install
+npm run build    # compile TypeScript
+npm run lint     # run ESLint
+```
 
-- **node-archiver**: A powerful library that provides a streaming interface for archive generation. It's what we use to create the database dump archives.
+## Libraries Used
 
-- **bytes.js**: This library helps us parse byte strings in Node.js. It's a small but crucial part of our toolkit.
+- **[mysql2](https://github.com/sidorares/node-mysql2)** — MySQL client for Node.js with Promise support. Used for wildcard database discovery.
 
-- **mysql**: A pure Node.js JavaScript client implementing the MySQL protocol. It's the backbone of our MySQL operations.
+- **[archiver](https://github.com/archiverjs/node-archiver)** — Streaming archive generation (zip, tar, tgz).
 
-We're grateful to the developers and contributors of these libraries. 🙏
+- **[bytes](https://github.com/visionmedia/bytes.js)** — Byte string parsing for human-readable file sizes.
 
 ## License
 
 The MIT License (MIT). See [License File](LICENSE) for more information.
-```
